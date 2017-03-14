@@ -6,10 +6,14 @@ steps:
   id: "php-composer"
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/container-builder-test', '.' ]
+  args: [ 'build', '-f', 'Dockerfile-php', '-t', 'gcr.io/$PROJECT_ID/php', '.' ]
   id: "docker-build"
   waitFor:
   - "php-composer"
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-f', 'Dockerfile-nginx', '-t', 'gcr.io/$PROJECT_ID/nginx', '.' ]
+  id: "docker-build"
 
 - name: gcr.io/cloud-builders/gsutil
   args: ["cp", "gs://${PROJECT_ID}/production.kubeconfig", "/workspace/kubeconfig"]
@@ -20,4 +24,5 @@ steps:
   args: ["kubectl", "apply", "-f", "/workspace/production"]
 
 images:
-- 'gcr.io/$PROJECT_ID/container-builder-test'
+- 'gcr.io/$PROJECT_ID/php'
+- 'gcr.io/$PROJECT_ID/nginx'

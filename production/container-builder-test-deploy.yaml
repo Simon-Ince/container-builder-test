@@ -10,6 +10,12 @@ spec:
         app: cbt
     spec:
       containers:
-        - image: gcr.io/container-builder-test-161511/container-builder-test
+        - image: gcr.io/container-builder-test-161511/php
           name: cbt
           imagePullPolicy: "Always"
+        - image: gcr.io/container-builder-test-161511/nginx
+          name: nginx
+          imagePullPolicy: "Always"
+          ports:
+          - containerPort: 80
+            name: nginx
