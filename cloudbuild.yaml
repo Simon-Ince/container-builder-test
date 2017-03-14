@@ -7,13 +7,13 @@ steps:
 
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-f', 'Dockerfile-php', '-t', 'gcr.io/$PROJECT_ID/php', '.' ]
-  id: "docker-build"
+  id: "docker-build-php"
   waitFor:
   - "php-composer"
 
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-f', 'Dockerfile-nginx', '-t', 'gcr.io/$PROJECT_ID/nginx', '.' ]
-  id: "docker-build"
+  id: "docker-build-nginx"
 
 - name: gcr.io/cloud-builders/gsutil
   args: ["cp", "gs://${PROJECT_ID}/production.kubeconfig", "/workspace/kubeconfig"]
