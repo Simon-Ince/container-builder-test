@@ -2,17 +2,17 @@
 
 This repo is an example of using [Cloud Container Builder](https://cloud.google.com/container-builder/docs/quickstart-gcloud) for automatic builds of a PHP-FPM/Composer/Nginx site hosted in Google Container Engine.
 
-This repo was inspired by the talk ()"Container management and deployment: from development to production")[(https://www.youtube.com/watch?v=XL9CQobFB8I)] given at (Google Cloud Next '17)[https://www.youtube.com/playlist?list=PLIivdWyY5sqI8RuUibiH8sMb1ExIw0lAR] by (Kelsey Hightower)[https://twitter.com/kelseyhightower].
+This repo was inspired by the talk [Container management and deployment: from development to production](https://www.youtube.com/watch?v=XL9CQobFB8I) given at [Google Cloud Next '17](https://www.youtube.com/playlist?list=PLIivdWyY5sqI8RuUibiH8sMb1ExIw0lAR) by [Kelsey Hightower](https://twitter.com/kelseyhightower).
 
 [![Container management and deployment: from development to production (Google Cloud Next '17)](https://img.youtube.com/vi/XL9CQobFB8I/0.jpg)](https://www.youtube.com/watch?v=XL9CQobFB8I)
 
 ## Prerequisites
 
-* A (GCP account)[https://cloud.google.com/] with a (Project)[https://cloud.google.com/resource-manager/docs/creating-managing-projects] already established.
+* A [GCP account](https://cloud.google.com/) with a [Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) already established.
 
-* (A GCP container clusters created)[https://cloud.google.com/sdk/gcloud/reference/container/clusters/create] called `production	`.
+* [A GCP container clusters created](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) called `production	`.
 
-* (Google Cloud SDK installed locally)[https://cloud.google.com/sdk/downloads], and (logged in)[https://cloud.google.com/sdk/gcloud/reference/auth/login].
+* [Google Cloud SDK installed locally](https://cloud.google.com/sdk/downloads), and [logged in](https://cloud.google.com/sdk/gcloud/reference/auth/login).
 
 ## Setup
 
@@ -20,7 +20,7 @@ This repo was inspired by the talk ()"Container management and deployment: from 
 
 * Change the environment variables in `bin/create-production-kubeconfig` and run `. ./bin/create-production-kubeconfig` from the repo's root.
 
-* (Create a Build Trigger for the forked repo.)[https://cloud.google.com/container-builder/docs/creating-build-triggers]
+* [Create a Build Trigger for the forked repo](https://cloud.google.com/container-builder/docs/creating-build-triggers).
 
 ## What's going on here?
 
