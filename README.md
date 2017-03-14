@@ -80,3 +80,7 @@ images:
 - 'gcr.io/$PROJECT_ID/nginx'
 ```
 Our newly built image are push to our GCP Container Registry.
+
+## Todo
+
+* Currently, images are pushed to the Registry after the deployment steps have been completed, which means the images from the previous and not current build are being deployed. I have attempted to move the `images` map further up but it breaks the `steps` map.
