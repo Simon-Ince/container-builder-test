@@ -20,7 +20,9 @@ This repo was inspired by the talk [Container management and deployment: from de
 
 * Change the environment variables in `bin/create-production-kubeconfig` and run `. ./bin/create-production-kubeconfig` from the repo's root.
 
-* [Create a Build Trigger for the forked repo](https://cloud.google.com/container-builder/docs/creating-build-triggers).
+* Change the image names in `production/container-builder-test-deploy.yaml`, swapping the project names for your own.
+
+* [Create a Build Trigger for the forked repo](https://cloud.google.com/container-builder/docs/creating-build-triggers) in the GCP dashboard.
 
 ## What's going on here?
 
