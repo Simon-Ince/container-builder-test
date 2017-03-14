@@ -15,10 +15,6 @@ steps:
   args: [ 'build', '-f', 'Dockerfile-nginx', '-t', 'gcr.io/$PROJECT_ID/nginx', '.' ]
   id: "docker-build-nginx"
 
-images:
-- 'gcr.io/$PROJECT_ID/php'
-- 'gcr.io/$PROJECT_ID/nginx'
-
 - name: gcr.io/cloud-builders/gsutil
   args: ["cp", "gs://${PROJECT_ID}/production.kubeconfig", "/workspace/kubeconfig"]
 
@@ -26,3 +22,7 @@ images:
   env: ["KUBECONFIG=/workspace/kubeconfig"]
   entrypoint: "/hyperkube"
   args: ["kubectl", "apply", "-f", "/workspace/production"]
+
+images:
+- 'gcr.io/$PROJECT_ID/php'
+- 'gcr.io/$PROJECT_ID/nginx'
