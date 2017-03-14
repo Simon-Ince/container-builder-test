@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cbt
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: cbt
+    spec:
+      containers:
+        - image: gcr.io/container-builder-test-161511/container-builder-test
+          name: cbt
+          imagePullPolicy: "Always"
