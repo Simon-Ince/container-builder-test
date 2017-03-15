@@ -68,15 +68,15 @@ The `gcr.io/cloud-builders/gsutil` image is used to access the GCP Bucket we upl
   env: ['KUBECONFIG=/workspace/kubeconfig']
   args: ['helm', 'init']
 ```
-Next, we make sure Tiller is installed on the server so Helm can deploy the chart.
+Next, we use the `lushdigital/helm-docker` image to make sure Tiller is installed on the server so Helm can deploy the chart.
 
 6.
 ```
 - name: 'lushdigital/helm-docker'
   env: ['KUBECONFIG=/workspace/kubeconfig']
-  args: ['helm_install_or_upgrade', 'default', '$PROJECT_ID', 'gcpproject=$PROJECT_ID', 'production/gcp-container-builder-with-php-compose']
+  args: ['helm_install_or_upgrade', 'default', '$PROJECT_ID', 'gcp.project=$PROJECT_ID', 'production/gcp-container-builder-with-php-compose']
 ```
-Now we can use Helm to deploy our chart.
+Now we can again use the `lushdigital/helm-docker` image to use Helm to deploy our chart. The `helm_install_or_upgrade` helper script inside `lushdigital/helm-docker` is passed as our argument, we pass it our namespace `default`, our release-name `$PROJECT_ID` which will be replaced with out Project Id, our values applied using the Helm `--set` option which in this case is `gcp.project` set to out Project Id , and finally our chart `production/gcp-container-builder-with-php-compose`]"
 
 7.
 ```
@@ -90,4 +90,4 @@ Our newly built image are push to our GCP Container Registry.
 
 * Currently, images are pushed to the Registry after the deployment steps have been completed, which means the images from the previous and not current build are being deployed. I have attempted to move the `images` map further up but it breaks the `steps` map.
 
-* Create a Helm branch so less manual intervention is required.
+* ~~Create a Helm branch so less manual intervention is required.~~
