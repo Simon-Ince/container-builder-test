@@ -20,6 +20,10 @@ steps:
 
 - name: "devth/helm"
   env: ["KUBECONFIG=/workspace/kubeconfig"]
+  args: ['helm', 'init']
+
+- name: "devth/helm"
+  env: ["KUBECONFIG=/workspace/kubeconfig"]
   args: ['helm_install_or_upgrade', 'production/gcp-container-builder-with-php-compose']
 
 images:
