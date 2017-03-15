@@ -20,7 +20,7 @@ steps:
 
 - name: "devth/helm"
   env: ["KUBECONFIG=/workspace/kubeconfig"]
-  args: ['install', production/gcp-container-builder-with-php-compose]
+  args: ['install', 'production/gcp-container-builder-with-php-compose']
 
 images:
 - 'gcr.io/$PROJECT_ID/php'
