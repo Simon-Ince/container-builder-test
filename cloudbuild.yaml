@@ -24,7 +24,7 @@ steps:
 
 - name: 'lushdigital/helm-docker'
   env: ['KUBECONFIG=/workspace/kubeconfig']
-  args: ['helm_install_or_upgrade', 'default', '$PROJECT_ID', 'gcpproject=$PROJECT_ID', 'production/gcp-container-builder-with-php-compose']
+  args: ['helm_install_or_upgrade', 'default', '$PROJECT_ID', 'gcp.project=$PROJECT_ID', 'production/gcp-container-builder-with-php-compose']
 
 images:
 - 'gcr.io/$PROJECT_ID/php'
