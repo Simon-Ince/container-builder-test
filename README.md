@@ -66,14 +66,21 @@ The `gcr.io/cloud-builders/gsutil` image is used to access the GCP Bucket we upl
 
 5.
 ```
-- name: "gcr.io/google_containers/hyperkube:v1.5.3"
-  env: ["KUBECONFIG=/workspace/kubeconfig"]
-  entrypoint: "/hyperkube"
-  args: ["kubectl", "apply", "-f", "/workspace/production"]
+- name: 'lushdigital/helm-docker'
+  env: ['KUBECONFIG=/workspace/kubeconfig']
+  args: ['helm', 'init']
 ```
-The `gcr.io/google_containers/hyperkube:v1.5.3` image uses `production.kubeconfig` to access our cluster and deploy our Kubernetes manifests.
+Next, we make sure Tiller is installed on the server so Helm can deploy the chart.
 
 6.
+```
+- name: 'lushdigital/helm-docker'
+  env: ['KUBECONFIG=/workspace/kubeconfig']
+  args: ['helm_install_or_upgrade', 'default', '$PROJECT_ID', 'gcpproject=$PROJECT_ID', 'production/gcp-container-builder-with-php-compose']
+```
+Now we can use Helm to deploy our chart.
+
+7.
 ```
 images:
 - 'gcr.io/$PROJECT_ID/php'
