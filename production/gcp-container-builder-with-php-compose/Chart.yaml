@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for PHP-FPM/Composer/Nginx
+name: gcp-container-builder-with-php-compose
+version: 0.1.0
