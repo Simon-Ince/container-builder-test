@@ -2,29 +2,29 @@ steps:
 
 - name: 'composer/composer'
   args: [ 'install' ]
-  dir: "php"
-  id: "php-composer"
+  dir: 'php'
+  id: 'php-composer'
 
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-f', 'Dockerfile-php', '-t', 'gcr.io/$PROJECT_ID/php', '.' ]
-  id: "docker-build-php"
+  id: 'docker-build-php'
   waitFor:
-  - "php-composer"
+  - 'php-composer'
 
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-f', 'Dockerfile-nginx', '-t', 'gcr.io/$PROJECT_ID/nginx', '.' ]
-  id: "docker-build-nginx"
+  id: 'docker-build-nginx'
 
 - name: gcr.io/cloud-builders/gsutil
-  args: ["cp", "gs://${PROJECT_ID}/production.kubeconfig", "/workspace/kubeconfig"]
+  args: ['cp', 'gs://$PROJECT_ID/production.kubeconfig', '/workspace/kubeconfig']
 
-- name: "devth/helm"
-  env: ["KUBECONFIG=/workspace/kubeconfig"]
+- name: 'lushdigital/helm-docker'
+  env: ['KUBECONFIG=/workspace/kubeconfig']
   args: ['helm', 'init']
 
-- name: "devth/helm"
-  env: ["KUBECONFIG=/workspace/kubeconfig"]
-  args: ['helm_install_or_upgrade', 'default', '${PROJECT_ID}', 'gcpproject=$PROJECT_ID', 'production/gcp-container-builder-with-php-compose']
+- name: 'lushdigital/helm-docker'
+  env: ['KUBECONFIG=/workspace/kubeconfig']
+  args: ['helm_install_or_upgrade', 'default', '$PROJECT_ID', 'gcpproject=$PROJECT_ID', 'production/gcp-container-builder-with-php-compose']
 
 images:
 - 'gcr.io/$PROJECT_ID/php'
