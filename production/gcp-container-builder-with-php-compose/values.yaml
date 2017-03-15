@@ -7,7 +7,7 @@ gcp:
 nginx:
   name: nginx
   image: nginx
-  tag: stable
+  tag: latest
   pullPolicy: IfNotPresent
 php:
   name: php
