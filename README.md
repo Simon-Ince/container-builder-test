@@ -6,6 +6,12 @@ This repo was inspired by the talk [Container management and deployment: from de
 
 [![Container management and deployment: from development to production (Google Cloud Next '17)](https://img.youtube.com/vi/XL9CQobFB8I/0.jpg)](https://www.youtube.com/watch?v=XL9CQobFB8I)
 
+## Helm
+
+This repo also has a Helm branch, with an example of deploying using charts:
+
+[Deploying using charts](https://github.com/Simon-Ince/gcp-container-builder-with-php-composer/tree/helm).
+
 ## Prerequisites
 
 * A [GCP account](https://cloud.google.com/) with a [Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) already established.
