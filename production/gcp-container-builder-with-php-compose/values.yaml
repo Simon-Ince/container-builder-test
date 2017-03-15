@@ -12,7 +12,7 @@ nginx:
 php:
   name: php
   image: php
-  tag: stable
+  tag: latest
   pullPolicy: Always
 service:
   type: ClusterIP
